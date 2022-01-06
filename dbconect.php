@@ -1,7 +1,7 @@
 <?php
 
 Class Connection{
- 
+	//datos de acceso
 	private $server = "mysql:host=localhost;dbname=prueba_tecnica_dev";
 	private $username = "root";
 	private $password = "";
@@ -24,5 +24,3 @@ Class Connection{
  	}
  
 }
- 
-?>

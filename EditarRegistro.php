@@ -6,17 +6,18 @@
 		$database = new Connection();
 		$db = $database->open();
 		try{
+			//Obtenemos los datos con el 'id' para realizar la actualización
 			$Id = $_GET['id'];
-			$Nombres = $_POST['nombre'];
-			$Emails = $_POST['email'];
+			$Nombres = $_POST['txtnom'];
+			$Emails = $_POST['txtmail'];
 			$Sexo = $_POST['sex'];
 			$Area_id = $_POST['Area'];
+			$Descripcion = $_POST['Descripcion'];
 			$Boletin = $_POST['chkboletin'];
-			$Descripcion = $_POST['txtarea'];
+			
 
-			$sql = "UPDATE empleados SET nombre = '$Nombres', Emails = '$email', sexo = '$Sexo', area_id = '$Area_id', boletin = '$Boletin' , descripcion = '$Descripcion' WHERE idEMp = '$id'";
-			//if-else statement in executing our query
-			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Empleado actualizado correctamente' : 'No se puso actualizar empleado';
+			$sql = "UPDATE empleado SET nombre = '$Nombres', email = '$Emails', sexo = '$Sexo', area_id = '$Area_id', boletin = '$Boletin' , descripcion = '$Descripcion' WHERE id= '$Id'";		
+			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Empleado actualizado correctamente' : 'No se pudo actualizar empleado';
 
 		}
 		catch(PDOException $e){
@@ -29,7 +30,6 @@
 	else{
 		$_SESSION['message'] = 'Complete el formulario de edición';
 	}
+	
 
 	header('location: index.php');
-
-?>
